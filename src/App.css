@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.btn-outline-success {
+  color: white;
+  border-color: orange;
+}
+.btn-outline-success:hover {
+    background-color: orange;
+  }
