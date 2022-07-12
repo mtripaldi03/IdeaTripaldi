@@ -1,0 +1,54 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.btn-primary:disabled,
+.btn-primary[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+.border-dark{
+    width: 50px;
+    border-color: #000000 !important;
+}
+.btn-primary:active{
+    background-color: orange;
+    box-shadow: none;
+}
+.btn-primary:focus{
+    background-color: orange;
+    box-shadow: none;
+}
+.btn-primary {
+    background-color: orange;
+    border-color: black;
+}
+
+.btn-info {
+    background-color: orange;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: red;
+}
+
+.btn-info:hover {
+    background-color: red;
+    color: white;
+}
+
+.btn-info:disabled {
+     background-color: #cccccc;
+     border: 1px solid #999999;
+}
+
+.btn {
+transition: none;
+}
+
+.btn-primary:active:focus {
+    box-shadow: none;
+}

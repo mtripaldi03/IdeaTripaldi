@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from '../logo.png'
-import styles from '../index.css'
 import { Navbar, Container, Nav, NavDropdown, Form, FormControl, Button} from 'react-bootstrap';
+import CartWidget from './CartWidget';
 class Test extends Component {
     state = {  } 
     render() { 
@@ -23,7 +23,7 @@ class Test extends Component {
                 <NavDropdown.Item href="#action/3.2">Calzado</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.3">Accesorios</NavDropdown.Item>
                 </NavDropdown>
-              <Nav.Link href="#link">Contacto</Nav.Link>
+            
             </Nav>
             <Form className="d-flex">
         <FormControl
@@ -34,7 +34,10 @@ class Test extends Component {
         />
         <Button variant="outline-success">Buscar</Button>
       </Form>
+      
+      <Nav.Link href="#link"></Nav.Link>
           </Navbar.Collapse>
+          <Nav.Link href="#link"><CartWidget cartTotal="5"/></Nav.Link>
         </Container>
       </Navbar>
       </>
