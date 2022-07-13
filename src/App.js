@@ -5,8 +5,7 @@ import ItemListContainer from './components/ItemListContainer';
 import ItemCount from './components/ItemCount';
 function App() {
   const onAddItem = (count) => {
-    <div className="qty-cart">{count}</div>
-    ;
+
   };
   return (
     <>
