@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import ItemList from "./ItemList"
+import ItemDetail from "./ItemList"
 
-const ItemListContainer = (props) => {
+const ItemDetailContainer = () => {
 
-const [items, setItems] = useState([]);
+const [items, setItems] = useState({});
 const data = [{
   "id": 1,
   "prod_name": "Wine - Riesling Dr. Pauly",
@@ -67,23 +67,23 @@ const data = [{
 }];
 useEffect(
 () => {
-let getItems = new Promise((resolve) => {
+let getItem = new Promise((resolve) => {
   setTimeout(
     () => {resolve(data)}, 2000);})
 
-getItems.then(
+getItem.then(
   (res) => {
-    setItems(data) 
+    const foundItem = response.filter((item) => item.id == 2);
+    setItems(foundItem[0]);
   }
 )}, [])
    return (
    <>
-   <h1 style={{color: "red"}}>{props.greeting}</h1>
-   <div class="row row-cols-2 row-cols-md-6"><ItemList item={items} /></div>
+   <ItemDetail item={items} />
    </>
    )
   };
 
 
 
-export default ItemListContainer;
+export default ItemDetailContainer;
