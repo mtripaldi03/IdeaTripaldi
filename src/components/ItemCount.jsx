@@ -57,14 +57,15 @@ const ItemCount = ({ stock, initial, onAdd }) => {
         </button>
       </div>
       <div className="d-flex justify-content-center">
-        <button
-          onClick={() => onAdd(count)}
-          type="button"
-          className="btn btn-info"
-          disabled={count === "" || count === 0}
-        >
-          Add to cart
-        </button>
+      {count == 0 ? (<div></div>) : (<button
+         onClick={() => onAdd(count)}
+         type="button"
+         className="btn btn-info"
+         disabled={count === "" || count === 0}
+       > Add to cart
+       </button>)  }
+        
+          
       </div>
     </>
   );

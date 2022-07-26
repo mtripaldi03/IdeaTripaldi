@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import ItemDetail from "./ItemList"
+import React, { useEffect, useState } from "react";
+import ItemDetail from "./ItemDetail";
+import { useParams } from "react-router-dom";
+import Spinner from 'react-bootstrap/Spinner'
 
-const ItemDetailContainer = () => {
-
-const [items, setItems] = useState({});
 const data = [{
   "id": 1,
   "prod_name": "Wine - Riesling Dr. Pauly",
@@ -65,25 +64,31 @@ const data = [{
   "stock": 83,
   "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJlSURBVDjLhZPfa5JhFMcH3dX/Meiuv8CBoRdjIvOieRUYmjkzmBaowXCbU9E5U5KhtmX7QbrpyF3UuhDRVFoXgnrhmJO2CSFELaIYw7FvzznU+uGqA+d9znuecz7v9zkPbx+APrPZ7F1YWGgnEgmsra0hlUohnU7zSu+UX15eRiwWez8+Ph6inh/Oj7m5uapYD/F/O45EIu96AIuLi12xnirMT/EvJxNK0QMgeWTX7j+D1pfHTf8r6AMlGB6UYQy9xu2Hb3iPLB6P9wKWlpbOAHrRfOuP5jvhn4DH8SfnA05OTrCzs4NGo4FarYZKpYKtrS2USiUUCgXkcrm/K/ie5MnPzs5ie3sbKysr8Hq9DOrctaCpVqHb7Z4/g/l5TqLdbmN/fx+7u7toNpuspl6vs1erVa55NH8OIBKN8mYmk0EwGMTBwQGrCQQCDEsmk/D7/awgEon2AsLhMAM6nQ729va42efzsVyPx4NyucwKCEK56enpj6Ojo/ckEsklBgSDoTMFJpOJVRCs1Wohn8/D7XbD4XDwkClXLBa5ZmhoyMsA38wMAzY2NmC321ERZ56YmIBCoYBOp0MoFILNZuNYNEGtVj8niMVi+cQAl8vVzRcKp2NjY3A6nQx4sbkJmUyGbDbLN0FXSUeTSqVQKpUXCTA5OXnEAPHV+tSU86tGcwMGg4EBGo2Gi+VyOYaHh9kpFrlTlUr1kgB6vf6w79eJXhYmZDfEsA5XV1c/rK+vQ/xoIGVWq5VjytEe1VDtb4D+/v4LAwMDVwYHB99qtdovRqPxSPjxyMjIdeFXRfyZcrRHNVT7DWZq3D+QvMywAAAAAElFTkSuQmCC"
 }];
-useEffect(
-() => {
-let getItem = new Promise((resolve) => {
-  setTimeout(
-    () => {resolve(data)}, 2000);})
-
-getItem.then(
-  (res) => {
-    const foundItem = response.filter((item) => item.id == 2);
-    setItems(foundItem[0]);
-  }
-)}, [])
-   return (
-   <>
-   <ItemDetail item={items} />
-   </>
-   )
-  };
 
 
+const ItemDetailContainer = () => {
+  const [item, setItem] = useState({});
+  const [loading, setLoading] = useState(false);
+  const params = useParams();
+  const promise = new Promise((res) => {
+    setTimeout(() => res(data), 2000);
+  });
+
+  useEffect(() => {
+    setLoading(true);
+    promise.then((response) => {
+      const foundItem = response.filter((item) => item.id == params.id);
+      setItem(foundItem[0]);
+      setLoading(false);
+    });
+  }, []);
+  return loading ? (
+  <>
+  <div class="text-center">
+  <Spinner animation="grow" />
+  </div>
+  </>) : <ItemDetail item={item} />;
+  
+};
 
 export default ItemDetailContainer;

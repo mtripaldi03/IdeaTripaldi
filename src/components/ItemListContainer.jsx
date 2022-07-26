@@ -79,7 +79,7 @@ getItems.then(
    return (
    <>
    <h1 style={{color: "red"}}>{props.greeting}</h1>
-   <div class="row row-cols-2 row-cols-md-6"><ItemList item={items} /></div>
+   <div class="row row-cols-2 row-cols-md-5"><ItemList item={items} /></div>
    </>
    )
   };

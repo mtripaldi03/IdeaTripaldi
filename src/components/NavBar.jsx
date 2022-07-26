@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from '../logo.png'
 import { Navbar, Container, Nav, NavDropdown, Form, FormControl, Button} from 'react-bootstrap';
 import CartWidget from './CartWidget';
-class Test extends Component {
+class NavBar extends Component {
     state = {  } 
     render() { 
         return (
@@ -12,11 +12,11 @@ class Test extends Component {
         <a class="navbar-brand" href="#">
     <img src={logo} width="30" height="30" class="d-inline-block align-top" alt="" />
      </a>
-          <Navbar.Brand href="#home">Nombre Pendiente</Navbar.Brand>
+          <Navbar.Brand href="/">Nombre Pendiente</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#home">Nosotros</Nav.Link>
+              <Nav.Link href="#">Nosotros</Nav.Link>
               
               <NavDropdown title="Productos" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Indumentaria</NavDropdown.Item>
@@ -37,7 +37,7 @@ class Test extends Component {
       
       <Nav.Link href="#link"></Nav.Link>
           </Navbar.Collapse>
-          <Nav.Link href="#link"><CartWidget cartTotal="5"/></Nav.Link>
+          <Nav.Link href="#link"><CartWidget /></Nav.Link>
         </Container>
       </Navbar>
       </>
@@ -45,4 +45,4 @@ class Test extends Component {
     }
 }
  
-export default Test ;
+export default NavBar ;
